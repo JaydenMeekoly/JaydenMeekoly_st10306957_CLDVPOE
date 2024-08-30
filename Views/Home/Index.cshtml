@@ -2,7 +2,108 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+@model CLDVPOE2.Models.CustomerProfile
+
+<style>
+    body {
+        background: linear-gradient(skyblue, lightgreen);                                                                       /*setting the background of the application*/
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        margin: 0;
+    }
+
+    .main-content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 60px);                                                                                                 /* Adjust height to exclude the navbar height */
+        padding-top: 60px;                                                                                                          /* Ensure content is below the navbar */
+    }
+
+    .container {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+</style>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#">Cloud POE</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Privacy</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content-wrapper">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <form asp-action="UploadImage" method="post" enctype="multipart/form-data" class="card p-3 shadow-sm">
+                    <h5 class="card-title">Upload Image</h5>
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control-file" />                                                 <!--allows the user to upload image -->
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Image</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col">
+                <form asp-action="AddCustomerProfile" method="post" class="card p-3 shadow-sm">
+                    <h5 class="card-title">Add Customer Profile</h5>
+                    <div class="form-group">
+                        <input type="text" name="FirstName" placeholder="First Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="LastName" placeholder="Last Name" class="form-control" />                          <!--allows the user to add profile -->
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="Email" placeholder="Email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="PhoneNumber" placeholder="Phone Number" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Profile</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col">
+                <form asp-action="ProcessOrder" method="post" class="card p-3 shadow-sm">
+                    <h5 class="card-title">Process Order</h5>
+                    <div class="form-group">
+                        <input type="text" name="orderId" placeholder="Order ID" class="form-control" />                            <!--allows the user to process order -->
+                    </div>
+                    <button type="submit" class="btn btn-info">Process Order</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form asp-action="UploadContract" method="post" enctype="multipart/form-data" class="card p-3 shadow-sm">           <!--allows the user to upload contract -->
+                    <h5 class="card-title">Upload Contract</h5>
+                    <div class="form-group">
+                        <input type="file" name="file" class="form-control-file" />
+                    </div>
+                    <button type="submit" class="btn btn-warning">Upload Contract</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
